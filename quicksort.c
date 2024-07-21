@@ -7,6 +7,15 @@ void swap(int *a, int *b)
     *a = temp;
 }
 
+void printArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[low];
@@ -35,6 +44,8 @@ void qs(int arr[], int lower, int upper)
     if (lower < upper)
     {
         int n = partition(arr, lower, upper);
+        printf("After partitioning around %d: ", arr[n]);
+        printArray(arr, upper + 1);
         qs(arr, lower, n - 1);
         qs(arr, n + 1, upper);
     }
@@ -46,18 +57,12 @@ int main()
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Original array: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
+    printArray(arr, n);
 
     qs(arr, 0, n - 1);
 
-    printf("\nSorted array: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
+    printf("Sorted array: ");
+    printArray(arr, n);
 
     return 0;
 }

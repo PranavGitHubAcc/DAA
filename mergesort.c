@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+void printArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 void merge(int arr[], int lb, int ub, int mid, int size)
 {
     int i = lb, j = mid + 1, b[size], k = lb;
@@ -41,9 +50,10 @@ void merge(int arr[], int lb, int ub, int mid, int size)
     for (k = lb; k <= ub; k++)
     {
         arr[k] = b[k];
-        printf("%d ", arr[k]);
     }
-    printf("\n");
+
+    printf("After merging: ");
+    printArray(arr, size);
 }
 
 void mergesort(int arr[], int lb, int ub, int size)
