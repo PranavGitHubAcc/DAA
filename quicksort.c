@@ -7,16 +7,16 @@ void swap(int *a, int *b)
     *a = temp;
 }
 
-void printArray(int arr[], int size)
+void printArray(int arr[],int lb ,int ub)
 {
-    for (int i = 0; i < size; i++)
+    for (int i = lb; i < ub; i++)
     {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
 
-int partition(int arr[], int low, int high)
+int partition(int arr[], int low, int high, int size)
 {
     int pivot = arr[low];
     int i = low, j = high;
@@ -39,30 +39,31 @@ int partition(int arr[], int low, int high)
     return j;
 }
 
-void qs(int arr[], int lower, int upper)
+void qs(int arr[], int lower, int upper, int size)
 {
     if (lower < upper)
     {
-        int n = partition(arr, lower, upper);
-        printf("After partitioning around %d: ", arr[n]);
-        printArray(arr, upper + 1);
-        qs(arr, lower, n - 1);
-        qs(arr, n + 1, upper);
+        int n = partition(arr, lower, upper, size);
+        printf("Sorting %d: ", arr[n]);
+        printArray(arr, lower, upper+1);
+        printf("\n");
+        qs(arr, lower, n - 1, size);
+        qs(arr, n + 1, upper, size);
     }
 }
 
 int main()
 {
-    int arr[] = {19, 17, 15, 12, 16, 18, 4, 11, 13};
+    int arr[] = {19, 17, 15, 12, 16, 18}; // 4, 11, 13
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Original array: ");
-    printArray(arr, n);
+    printArray(arr, 0, n-1);
 
-    qs(arr, 0, n - 1);
+    qs(arr, 0, n - 1, n);
 
     printf("Sorted array: ");
-    printArray(arr, n);
+    printArray(arr, 0, n-1);
 
     return 0;
 }

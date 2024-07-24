@@ -52,7 +52,7 @@ void merge(int arr[], int lb, int ub, int mid, int size)
         arr[k] = b[k];
     }
 
-    printf("After merging: ");
+    printf("\nAfter merging: ");
     printArray(arr, size);
 }
 
@@ -60,7 +60,7 @@ void mergesort(int arr[], int lb, int ub, int size)
 {
     if (lb < ub)
     {
-        int mid = (lb + ub) / 2;
+        int mid = lb + (ub-lb)/2;
         mergesort(arr, mid + 1, ub, size);
         mergesort(arr, lb, mid, size);
         merge(arr, lb, ub, mid, size);
@@ -69,7 +69,7 @@ void mergesort(int arr[], int lb, int ub, int size)
 
 int main()
 {
-    int arr[] = {19, 17, 15, 12, 16, 18, 4, 11, 13};
+    int arr[] = {19, 17, 15, 12, 16, 18}; // , 4, 11, 13, 10
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Original array: ");
