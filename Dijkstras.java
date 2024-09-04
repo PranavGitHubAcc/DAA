@@ -4,35 +4,35 @@ import java.util.Scanner;
 
 public class Dijkstras {
 	static int step;
-    public static void printing(int[] dist, int u, int[] visited, int vertices) {
-        System.out.printf("%-5d ", step);  // STEP number
+	public static void printing(int[] dist, int u, int[] visited, int vertices) {
+	    System.out.print(step + "\t");  // STEP number
 
-        // Print visited nodes
-        System.out.print("{");
-        for (int i = 0; i < vertices; i++) {
-            if (visited[i] == 1) {
-                System.out.print(i + ",");
-            }
-        }
-        System.out.print("}\t");
+	    // Print visited nodes
+	    System.out.print("{");
+	    for (int i = 0; i < vertices; i++) {
+	        if (visited[i] == 1) {
+	            System.out.print(i + ",");
+	        }
+	    }
+	    System.out.print("}\t");
 
-        // Print current vertex 'u'
-        if (u != -1) {
-            System.out.printf("%-5d ", u);
-        } else {
-            System.out.print("-    ");
-        }
+	    // Print current vertex 'u'
+	    if (u != -1) {
+	        System.out.print(u + "\t");
+	    } else {
+	        System.out.print("-\t");
+	    }
 
-        // Print distance array
-        for (int i = 0; i < vertices; i++) {
-            if (dist[i] == 10000) {
-                System.out.print("∞  ");  // Displaying infinity as ∞
-            } else {
-                System.out.printf("%-5d ", dist[i]);
-            }
-        }
-        System.out.println();
-    }
+	    // Print distance array
+	    for (int i = 0; i < vertices; i++) {
+	        if (dist[i] == 10000) {
+	            System.out.print("∞\t");  // Displaying infinity as ∞
+	        } else {
+	            System.out.print(dist[i] + "\t");
+	        }
+	    }
+	    System.out.println();
+	}
     
     public static int choose(int[] dist, int[] visited, int vertices) {
         int min = 10000;  
